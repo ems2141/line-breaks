@@ -7,6 +7,21 @@ describe LineBreak do
 
     lines = LineBreak.new(text).break_by(10)
 
-    expect(lines).to eq("hello my \nname is \nellie.")
+    expect(lines).to eq("hello my\nname is\nellie.\n")
+  end
+
+  it "should break up longer lines to max length of 80 chars per line" do
+    text = "Jean shorts you probably haven't heard of them farm-to-table."
+
+    lines = LineBreak.new(text).break_by(20)
+
+    result = <<"here"
+Jean shorts you
+probably haven't
+heard of them
+farm-to-table.
+here
+
+    expect(lines).to eq(result)
   end
 end

@@ -11,8 +11,7 @@ class LineBreak
     array_of_words.each do |word|
       word_length = word.length
       if remaining_space > 0 && remaining_space-word_length > 0
-        results << word
-        results << " "
+        results << word + " "
         remaining_space = remaining_space - word_length
       else
         results << "\n"
@@ -22,5 +21,11 @@ class LineBreak
       end
     end
     results.rstrip
+    lines = results.split("\n")
+    ans = []
+    lines.each do |line|
+      ans << line.rstrip + "\n"
+    end
+    ans.join
   end
 end
